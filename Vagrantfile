@@ -31,7 +31,8 @@ Vagrant.configure("2") do |config|
 ###############################################################################
 # Global Provisioning settings                                                #
 ###############################################################################
-    env = 'production'
+    env  = 'production'
+    R10K = "r10k deploy environment -pv"
 
 ###############################################################################
 # Global VirtualBox settings                                                  #
