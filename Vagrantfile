@@ -31,8 +31,7 @@ Vagrant.configure("2") do |config|
 ###############################################################################
 # Global Provisioning settings                                                #
 ###############################################################################
-    env  = 'production'
-    R10K = "r10k deploy environment -pv"
+    env = 'production'
 
 ###############################################################################
 # Global VirtualBox settings                                                  #
@@ -50,6 +49,7 @@ Vagrant.configure("2") do |config|
     config.vm.define :puppet do |puppet_config|
       puppet_config.vm.host_name = "puppet.multi-master.vagrant"
       puppet_config.vm.network :private_network, ip: "192.168.43.130"
+      puppet_config.vm.network :forwarded_port, guest: 22, host: 2130
       puppet_config.vm.provision :shell, inline: 'sudo cp /vagrant/files/autosign.conf /etc/puppet/autosign.conf'
       puppet_config.vm.provision :puppet do |puppet|
         puppet.manifests_path = "manifests"
@@ -59,9 +59,12 @@ Vagrant.configure("2") do |config|
       end
       puppet_config.vm.provision :shell, inline: R10K
       puppet_config.vm.provision :shell, inline: 'sudo cp /vagrant/files/hiera.yaml /etc/puppet/hiera.yaml'
-      puppet_config.vm.provision :puppet_server do |puppet|
-        puppet.options = "-t --environment #{env}"
-        puppet.puppet_server = 'puppet.multi-master.vagrant'
+      puppet_config.vm.provision :puppet do |puppet|
+        puppet.options = "--environment #{env}"
+        puppet.manifests_path = "manifests"
+        puppet.manifest_file  = ""
+        puppet.module_path = "modules"
+        puppet.hiera_config_path = "files/hiera.yaml"
       end
     end
 

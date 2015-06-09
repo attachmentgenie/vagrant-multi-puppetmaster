@@ -13,11 +13,3 @@ class { 'r10k':
   purgedirs         => ["${::settings::confdir}/environments"],
   manage_modulepath => false,
 }
-class { '::epel': }
-class { '::puppet':
-  allow_any_crl_auth          => true,
-  runmode                     => 'none',
-  server                      => true,
-  server_external_nodes       => '',
-  server_foreman              => false,
-}
