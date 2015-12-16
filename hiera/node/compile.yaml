@@ -1,26 +1,15 @@
 ---
 classes:
   - puppetmaster::role_puppetmaster
-puppetmaster::profile_foreman_proxy::foreman_host: puppetca.multimaster.vagrant
 puppetmaster::profile_foreman_proxy::puppetca: false
 puppetmaster::profile_mcollective::client: false
-puppetmaster::profile_mcollective::middleware_hosts:
- - puppetca.multimaster.vagrant
 puppetmaster::profile_puppet::allow_any_crl_auth: false
-puppetmaster::profile_puppet::dns_alt_names:
-  - proxy.multimaster.vagrant
-puppetmaster::profile_puppet::hiera_yaml_datadir: "/etc/puppet/environments/%%{}{environment}/hieradata"
-puppetmaster::profile_puppet::server_puppetdb_host: puppetca.multimaster.vagrant
+puppetmaster::profile_puppet::hiera_yaml_datadir: "/etc/puppet/environments/production/hieradata"
 puppetmaster::profile_puppet::runmode: none
 puppetmaster::profile_puppet::server: true
 puppetmaster::profile_puppet::server_ca: false
 puppetmaster::profile_puppet::server_ca_proxy: "https://puppetca.multimaster.vagrant:8140"
 puppetmaster::profile_puppet::server_foreman: true
-puppetmaster::profile_puppet::server_foreman_url: https://puppetca.multimaster.vagrant
-puppetmaster::profile_puppet::server_puppetdb_host: puppetca.multimaster.vagrant
-puppetmaster::profile_puppet::server_reports: 'store, foreman'
-puppetmaster::profile_puppet::server_storeconfigs_backend: 'puppetdb'
-puppetmaster::profile_r10k::puppet_repo_url: 'https://github.com/attachmentgenie/r10k-multi-puppetmaster.git'
 puppetmaster::stack_puppetmaster::foreman_proxy: true
 puppetmaster::stack_puppetmaster::haproxy_member: true
 puppetmaster::stack_puppetmaster::mcollective: true

@@ -6,8 +6,11 @@ puppetmaster::profile_foreman::plugins:
 puppetmaster::profile_foreman_proxy::foreman_host: puppetca.multimaster.vagrant
 puppetmaster::profile_mcollective::middleware_hosts:
  - puppetca.multimaster.vagrant
+puppetmaster::profile_puppet::dns_alt_names:
+ - proxy.multimaster.vagrant
 puppetmaster::profile_puppet::puppetmaster: puppetca.multimaster.vagrant
 puppetmaster::profile_puppet::server_foreman_url: https://puppetca.multimaster.vagrant
 puppetmaster::profile_puppet::server_puppetdb_host: puppetca.multimaster.vagrant
 puppetmaster::profile_puppet::server_reports: 'store, foreman'
 puppetmaster::profile_puppet::server_storeconfigs_backend: 'puppetdb'
+puppetmaster::profile_r10k::puppet_repo_url: 'https://github.com/attachmentgenie/r10k-multi-puppetmaster.git'
