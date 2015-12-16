@@ -39,7 +39,8 @@ Vagrant.configure("2") do |config|
 ###############################################################################
 # Global provisioning settings                                                #
 ###############################################################################
-    env = 'development'
+    env = 'production'
+    R10K = "r10k deploy environment -pv"
     SCRIPT = "sudo puppet agent -t --environment #{env} --server puppet.testlab.vagrant; echo $?"
 
 ###############################################################################

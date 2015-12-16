@@ -1,10 +1,11 @@
 # Creating a disposable test environment
 
 ## Requirements
-    Virtualbox                 => https://www.virtualbox.org
-    Vagrant                    => http://www.vagrantup.comva
-    vagrant-hostmanager        => vagrant plugin install vagrant-hostmanager
-    vagrant-cachier (optional) => vagrant plugin install vagrant-cachier
+    Virtualbox                  => https://www.virtualbox.org
+    Vagrant                     => http://www.vagrantup.com
+    vagrant-hostmanager         => vagrant plugin install vagrant-hostmanager
+    vagrant-cachier  (optional) => vagrant plugin install vagrant-cachier
+    vagrant-triggers (optional) => vagrant plugin install vagrant-triggers
 
 ## Preparation
     git submodule update --init
@@ -35,8 +36,3 @@
     username: admin
     passwd  : secret
     puppetdb => http://puppetca.multimaster.vagrant:8080
-## Interfaces
-
-### puppetdb
-
-http://puppet.multimaster.vagrant:8080
